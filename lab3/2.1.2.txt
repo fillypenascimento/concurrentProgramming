@@ -1,0 +1,4 @@
+2.1.2
+    Assumindo que o valor de contabancaria é inicializado com 0 no momento da declaração, a função de retirada irá iniciar a 
+execução do algorítmo sem fazer alterações e a função depósito irá finalizar depositando 20 unidades, sendo o valor final de
+contabancaria igual a 20 unidades.

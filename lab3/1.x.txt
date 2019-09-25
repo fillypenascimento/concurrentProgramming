@@ -1,0 +1,16 @@
+1.1.2
+    No código do exercício 1.1.1 temos várias threads manipulando a mesma variável global sem que haja verificação se há uma outra thread
+ou processo realizando alterações na variável. Como o único papel da função incrementos é incrementar a variável contador, não há prejuízos
+quanto à ordem de qual processo/thread incrementa a variável em um dado momento, já que o resultado final é avaliado na main após todos
+os processos/threads serem finalizadas.
+
+1.1.3
+    Utilizando alguma das abordagens de espera ocupada apresentadas, a fim de fazer com que um processo/thread não tente manipular a
+variável global enquanto outro processo/thread estiver fazendo alterações.
+
+1.2
+    Para evitar condições de corrida, são necessárias a verificação de quatro condições:
+        a. Dois ou mais processos não podem estar simultaneamente dentro de suas regiões críticas.
+        b. Nenhuma consideração pode ser feita a respeito da velocidade relativa dos processos, ou a respeito dos processadores disponíveis.
+        c. Nenhum processo que esteja fora de sua região crítica pode bloquear a execução de outro processo.
+        d. Nenhum processo pode ser a obrigado a esperar indefinidamente para entrar em sua região crítica.
