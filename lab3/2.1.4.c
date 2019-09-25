@@ -1,6 +1,6 @@
 // autor: Amanda Oliveira Alves e Fillype Alves do Nascimento
-// arquivo: 2.1.1.c
-// atividade: 2.1.1
+// arquivo: 2.1.4.c
+// atividade: 2.1.4
 
 #include <pthread.h>
 #include <stdio.h>
