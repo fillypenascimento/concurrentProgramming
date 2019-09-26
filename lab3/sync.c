@@ -1,6 +1,6 @@
 // autor: Amanda Oliveira Alves e Fillype Alves do Nascimento
-// arquivo: 1.1.1.c
-// atividade: 1.1.1
+// arquivo: sync.c
+// atividade: 3.1.1
 
 #include <pthread.h>
 #include <stdio.h>
@@ -12,7 +12,7 @@ int contador = 0;
 
 void *incrementos() {
     for(int i=0;i<100;i++){
-        contador++;
+        __sync_fetch_and_add (&contador, 1);
     }
     pthread_exit(NULL);
 }
