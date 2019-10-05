@@ -1,13 +1,13 @@
 // autor: Amanda Oliveira Alves
-// arquivo: contador.c
-// ativnade: 3.1.1
+// arquivo: 2.1.1.c
+// ativnade: 2.1.1
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
 #include <semaphore.h>
 #include <unistd.h>
-#define NUMTHREADS 90
+#define NUMTHREADS 10
 #define SALA1 10
 #define SALA2 6
 #define SALA3 18
