@@ -1,4 +1,4 @@
-// autor: Amanda Oliveira Alves
+// autor: Amanda Oliveira Alves e Fillype Alves do Nascimento
 // arquivo: 2.1.1.c
 // ativnade: 2.1.1
 
@@ -7,7 +7,7 @@
 #include <pthread.h>
 #include <semaphore.h>
 #include <unistd.h>
-#define NUMTHREADS 10
+#define NUMTHREADS 90
 #define SALA1 10
 #define SALA2 6
 #define SALA3 18
