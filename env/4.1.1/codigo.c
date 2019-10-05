@@ -7,7 +7,7 @@
 #include <unistd.h>
 int main(){
 
-	char *fn = "/tmp/output";
+	char *fn = "output";
 	char conteudo[201];
 	FILE *fp;
 	scanf("%200s", conteudo);
