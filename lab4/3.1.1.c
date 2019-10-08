@@ -1,37 +1,58 @@
-#include <stdlib.h>
-#include <pthread.h>
-#include <unistd.h>
-#define NUMTHREADS 1
+// autor: Amanda Oliveira Alves e Fillype Alves do Nascimento
+// arquivo: 3.1.1.c
+// atividade: 3.1.1
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <pthread.h>
+
+int contador = 0;
 pthread_cond_t condespera;
 pthread_mutex_t mutex;
-
-void *liberador(void *empty){
+void *carteiro(void *empty){
     pthread_mutex_lock(&mutex);
-    printf("Sou o incrementador. Daqui um segundo, libero o esperador\n");
+    printf("Sou o carteiro, daqui a 1 segundo eu volto\n");
     sleep(1);
     pthread_cond_signal(&condespera);
     pthread_mutex_unlock(&mutex);
 }
 
-void *esperador(void *empty) {
+void *cliente(void *args){
+    int id = *((int *)args);
     pthread_mutex_lock(&mutex);
-    pthread_cond_wait(&condespera, &mutex);
-    printf("Sou o esperador e já esperei.\n");
+    printf("Sou o cliente %d\n", id);
+    contador = contador + 1;
+    if ((contador % 2) == 0){
+         pthread_cond_wait(&condespera, &mutex);
+    }
     pthread_mutex_unlock(&mutex);
 }
 
-int main() {
-    pthread_t l, e;
+int main(){
+    pthread_t l, e[100];
     pthread_mutex_init(&mutex, NULL);
     pthread_cond_init(&condespera, NULL);
-    printf("Criando o esperador.\n");
-    pthread_create(&e, NULL, esperador, NULL);
-    printf("Dormindo 2 segundos antes de criar o incrementador.\n");
+    int *id;
+    pthread_t t[100];
+
+    for (int i = 0; i < 30; i++){
+        for(int j = 0; i<100; i++){
+            *id = j;
+            pthread_create(&e[i], NULL, cliente, (void *)id);
+        }  
+    }
+    
+    pthread_create(&l, NULL, carteiro, NULL);
     sleep(2);
-    pthread_create(&l, NULL, liberador, NULL);
+    for (int i = 0; i < 30; i++) {
+        for(int j = 0; i<100; i++){
+            pthread_join(e[i],NULL);
+        }
+        
+    }
+
     pthread_join(l, NULL);
-    pthread_join(e, NULL);
     pthread_mutex_destroy(&mutex);
     pthread_cond_destroy(&condespera);
     return 0;
