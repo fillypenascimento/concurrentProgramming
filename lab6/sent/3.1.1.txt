@@ -1,0 +1,144 @@
+// autor: Amanda Oliveira Alves e Fillype Alves do Nascimento
+// arquivo: 3.1.1.c
+// atividade: 3.1.1
+
+Valgrind
+
+==20901== Memcheck, a memory error detector
+==20901== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==20901== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==20901== Command: ./3
+==20901== 
+==20901== 
+==20901== HEAP SUMMARY:
+==20901==     in use at exit: 0 bytes in 0 blocks
+==20901==   total heap usage: 10 allocs, 10 frees, 2,720 bytes allocated
+==20901== 
+==20901== All heap blocks were freed -- no leaks are possible
+==20901== 
+==20901== For lists of detected and suppressed errors, rerun with: -s
+==20901== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+
+
+Helgrind
+
+==21012== Helgrind, a thread error detector
+==21012== Copyright (C) 2007-2017, and GNU GPL'd, by OpenWorks LLP et al.
+==21012== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==21012== Command: ./3
+==21012== 
+==21012== ---Thread-Announcement------------------------------------------
+==21012== 
+==21012== Thread #3 was created
+==21012==    at 0x4999542: clone (in /usr/lib64/libc-2.29.so)
+==21012==    by 0x488339E: create_thread (in /usr/lib64/libpthread-2.29.so)
+==21012==    by 0x4884D64: pthread_create@@GLIBC_2.2.5 (in /usr/lib64/libpthread-2.29.so)
+==21012==    by 0x483F575: pthread_create_WRK (hg_intercepts.c:427)
+==21012==    by 0x4840678: pthread_create@* (hg_intercepts.c:460)
+==21012==    by 0x401188: main (3.1.1.c:13)
+==21012== 
+==21012== ---Thread-Announcement------------------------------------------
+==21012== 
+==21012== Thread #2 was created
+==21012==    at 0x4999542: clone (in /usr/lib64/libc-2.29.so)
+==21012==    by 0x488339E: create_thread (in /usr/lib64/libpthread-2.29.so)
+==21012==    by 0x4884D64: pthread_create@@GLIBC_2.2.5 (in /usr/lib64/libpthread-2.29.so)
+==21012==    by 0x483F575: pthread_create_WRK (hg_intercepts.c:427)
+==21012==    by 0x4840678: pthread_create@* (hg_intercepts.c:460)
+==21012==    by 0x401188: main (3.1.1.c:13)
+==21012== 
+==21012== ----------------------------------------------------------------
+==21012== 
+==21012== Possible data race during read of size 4 at 0x404030 by thread #3
+==21012== Locks held: none
+==21012==    at 0x40113E: contador (3.1.1.c:6)
+==21012==    by 0x483F76D: mythread_wrapper (hg_intercepts.c:389)
+==21012==    by 0x48844BF: start_thread (in /usr/lib64/libpthread-2.29.so)
+==21012==    by 0x4999552: clone (in /usr/lib64/libc-2.29.so)
+==21012== 
+==21012== This conflicts with a previous write of size 4 by thread #2
+==21012== Locks held: none
+==21012==    at 0x401147: contador (3.1.1.c:6)
+==21012==    by 0x483F76D: mythread_wrapper (hg_intercepts.c:389)
+==21012==    by 0x48844BF: start_thread (in /usr/lib64/libpthread-2.29.so)
+==21012==    by 0x4999552: clone (in /usr/lib64/libc-2.29.so)
+==21012==  Address 0x404030 is 0 bytes inside data symbol "var"
+==21012== 
+==21012== ----------------------------------------------------------------
+==21012== 
+==21012== Possible data race during write of size 4 at 0x404030 by thread #3
+==21012== Locks held: none
+==21012==    at 0x401147: contador (3.1.1.c:6)
+==21012==    by 0x483F76D: mythread_wrapper (hg_intercepts.c:389)
+==21012==    by 0x48844BF: start_thread (in /usr/lib64/libpthread-2.29.so)
+==21012==    by 0x4999552: clone (in /usr/lib64/libc-2.29.so)
+==21012== 
+==21012== This conflicts with a previous write of size 4 by thread #2
+==21012== Locks held: none
+==21012==    at 0x401147: contador (3.1.1.c:6)
+==21012==    by 0x483F76D: mythread_wrapper (hg_intercepts.c:389)
+==21012==    by 0x48844BF: start_thread (in /usr/lib64/libpthread-2.29.so)
+==21012==    by 0x4999552: clone (in /usr/lib64/libc-2.29.so)
+==21012==  Address 0x404030 is 0 bytes inside data symbol "var"
+==21012== 
+==21012== ---Thread-Announcement------------------------------------------
+==21012== 
+==21012== Thread #1 is the program's root thread
+==21012== 
+==21012== ---Thread-Announcement------------------------------------------
+==21012== 
+==21012== Thread #11 was created
+==21012==    at 0x4999542: clone (in /usr/lib64/libc-2.29.so)
+==21012==    by 0x488339E: create_thread (in /usr/lib64/libpthread-2.29.so)
+==21012==    by 0x4884D64: pthread_create@@GLIBC_2.2.5 (in /usr/lib64/libpthread-2.29.so)
+==21012==    by 0x483F575: pthread_create_WRK (hg_intercepts.c:427)
+==21012==    by 0x4840678: pthread_create@* (hg_intercepts.c:460)
+==21012==    by 0x401188: main (3.1.1.c:13)
+==21012== 
+==21012== ----------------------------------------------------------------
+==21012== 
+==21012== Possible data race during read of size 4 at 0x404030 by thread #1
+==21012== Locks held: none
+==21012==    at 0x401193: main (3.1.1.c:16)
+==21012== 
+==21012== This conflicts with a previous write of size 4 by thread #11
+==21012== Locks held: none
+==21012==    at 0x401147: contador (3.1.1.c:6)
+==21012==    by 0x483F76D: mythread_wrapper (hg_intercepts.c:389)
+==21012==    by 0x48844BF: start_thread (in /usr/lib64/libpthread-2.29.so)
+==21012==    by 0x4999552: clone (in /usr/lib64/libc-2.29.so)
+==21012==  Address 0x404030 is 0 bytes inside data symbol "var"
+==21012== 
+==21012== ----------------------------------------------------------------
+==21012== 
+==21012== Possible data race during write of size 4 at 0x404030 by thread #1
+==21012== Locks held: none
+==21012==    at 0x40119C: main (3.1.1.c:16)
+==21012== 
+==21012== This conflicts with a previous write of size 4 by thread #11
+==21012== Locks held: none
+==21012==    at 0x401147: contador (3.1.1.c:6)
+==21012==    by 0x483F76D: mythread_wrapper (hg_intercepts.c:389)
+==21012==    by 0x48844BF: start_thread (in /usr/lib64/libpthread-2.29.so)
+==21012==    by 0x4999552: clone (in /usr/lib64/libc-2.29.so)
+==21012==  Address 0x404030 is 0 bytes inside data symbol "var"
+==21012== 
+==21012== 
+==21012== Use --history-level=approx or =none to gain increased speed, at
+==21012== the cost of reduced accuracy of conflicting-access information
+==21012== For lists of detected and suppressed errors, rerun with: -s
+==21012== ERROR SUMMARY: 20 errors from 4 contexts (suppressed: 0 from 0)
+
+HELGRIND APÓS ALTERAÇÕES NO CÓDIGO
+
+==23229== Helgrind, a thread error detector
+==23229== Copyright (C) 2007-2017, and GNU GPL'd, by OpenWorks LLP et al.
+==23229== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==23229== Command: ./3
+==23229== 
+==23229== 
+==23229== Use --history-level=approx or =none to gain increased speed, at
+==23229== the cost of reduced accuracy of conflicting-access information
+==23229== For lists of detected and suppressed errors, rerun with: -s
+==23229== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 491 from 28)
