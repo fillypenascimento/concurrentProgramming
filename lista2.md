@@ -1,0 +1,30 @@
+# Lista de exercícios para a Prova 2 - PC 2019/02 - Prof Jeremaias
+
+## Questão 1
+## Questão 2
+## Questão 3
+## Questão 4
+## Questão 5
+## Questão 6
+## Questão 7
+## Questão 8
+## Questão 9
+## Questão 10
+## Questão 11
+## Questão 12
+## Questão 13
+## Questão 14
+## Questão 15
+## Questão 16
+## Questão 17
+## Questão 18
+## Questão 19
+## Questão 20
+## Questão 21
+## Questão 22
+## Questão 23
+## Questão 24
+## Questão 25
+## Questão 26
+## Questão 27
+## Questão 28
